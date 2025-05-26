@@ -16,7 +16,24 @@ export default defineConfig([
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
   },
   tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  {
+    files: ['**/*.{jsx,tsx}'],
+    plugins: { react: pluginReact.configs.flat.recommended },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/jsx-uses-vars': 'off',
+      'react/display-name': 'off',
+      'react/require-default-props': 'off',
+      'no-empty-pattern': 'off',
+    },
+  },
   stylistic.configs.customize({
     semi: true,
   }),

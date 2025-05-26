@@ -8,9 +8,8 @@
     "start": "node server.js",
     "typecheck": "react-router typegen && tsc -b",
     "test": "echo 'No tests'",
-    "lint": "pnpm find-src | xargs -I {} eslint {}",
-    "lint:fix": "pnpm find-src | xargs -I {} eslint {} --fix",
-    "find-src": "find {app,server} -type f -name '*.ts' -o -name '*.tsx'",
+    "lint": "eslint \"app/**/*.{ts,tsx}\" \"server/**/*.{ts}\" --no-error-on-unmatched-pattern",
+    "lint:fix": "pnpm lint --fix",
     "prepare": "husky || true"
   },
   "dependencies": {
