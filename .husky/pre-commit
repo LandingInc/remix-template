@@ -1,0 +1,13 @@
+echo "\n=== pre-commit hook ==="
+
+TS_FILES_CHANGED=$(git diff --staged --name-only --diff-filter=ACMR | grep -E '^(app|server).*\.(ts|tsx)$' || true)
+
+if [ -n "$TS_FILES_CHANGED" ]; then
+  echo "\n 1. TypeScript files changed, running tests..."
+  pnpm test
+else
+  echo "\n 1. No TypeScript files changed, skipping tests."
+fi
+
+echo "\n 2. lint & format staged files..."
+pnpm lint-staged

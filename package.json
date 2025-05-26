@@ -6,7 +6,12 @@
     "build": "react-router build",
     "dev": "cross-env NODE_ENV=development node server.js",
     "start": "node server.js",
-    "typecheck": "react-router typegen && tsc -b"
+    "typecheck": "react-router typegen && tsc -b",
+    "test": "echo 'No tests'",
+    "lint": "pnpm find-src | xargs -I {} eslint {}",
+    "lint:fix": "pnpm find-src | xargs -I {} eslint {} --fix",
+    "find-src": "find {app,server} -type f -name '*.ts' -o -name '*.tsx'",
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@react-router/express": "^7.5.3",
@@ -20,6 +25,8 @@
     "react-router": "^7.5.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.27.0",
     "@react-router/dev": "^7.5.3",
     "@stylistic/eslint-plugin": "^4.4.0",
@@ -35,11 +42,23 @@
     "eslint": "^9.27.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "{app,server}/**/*.{ts,tsx}": [
+      "eslint --fix --quiet"
+    ]
   },
   "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
 }
