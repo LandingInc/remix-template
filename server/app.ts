@@ -1,6 +1,7 @@
 import "react-router";
 import { createRequestHandler } from "@react-router/express";
 import express from "express";
+import testRouter from "./routes/test";
 
 declare module "react-router" {
   interface AppLoadContext {
@@ -9,6 +10,12 @@ declare module "react-router" {
 }
 
 export const app = express();
+
+app.get("/health", (_req, res) => {
+  res.json({ message: "OK" });
+});
+
+app.use("/api/test", testRouter);
 
 app.use(
   createRequestHandler({
