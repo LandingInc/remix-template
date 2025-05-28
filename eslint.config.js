@@ -21,8 +21,8 @@ export default defineConfig([
     plugins: { react: pluginReact.configs.flat.recommended },
     settings: {
       react: {
-        version: 'detect'
-      }
+        version: 'detect',
+      },
     },
     rules: {
       'react/react-in-jsx-scope': 'off',

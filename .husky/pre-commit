@@ -1,6 +1,6 @@
 echo "\n=== pre-commit hook ==="
 
-TS_FILES_CHANGED=$(git diff --staged --name-only --diff-filter=ACMR | grep -E '^(app|server).*\.(ts|tsx)$' || true)
+TS_FILES_CHANGED=$(git diff --staged --name-only --diff-filter=ACMR | grep -E '^(src/app|src/server).*\.(ts|tsx)$' || true)
 
 if [ -n "$TS_FILES_CHANGED" ]; then
   echo "\n 1. TypeScript files changed, running tests..."
