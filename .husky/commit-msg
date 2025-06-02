@@ -1,3 +1,0 @@
-echo "\n=== commit-msg hook ==="
-
-pnpm dlx commitlint --edit $1
