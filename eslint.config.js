@@ -36,5 +36,6 @@ export default defineConfig([
   },
   stylistic.configs.customize({
     semi: true,
+    braceStyle: '1tbs',
   }),
 ]);
