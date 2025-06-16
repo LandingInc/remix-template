@@ -1,6 +1,9 @@
 import 'react-router';
 import { createRequestHandler } from '@react-router/express';
 import express from 'express';
+import { apiLogger } from './utils/api-logger';
+
+// Routes
 import testRouter from './routes/test';
 
 declare module 'react-router' {
@@ -14,6 +17,8 @@ export const app = express();
 app.get('/health', (_req, res) => {
   res.json({ message: 'OK' });
 });
+
+app.use(apiLogger);
 
 app.use('/api/test', testRouter);
 
