@@ -12,6 +12,7 @@
     "lint:fix": "pnpm lint --fix"
   },
   "dependencies": {
+    "@meshed/ui": "workspace:*",
     "@react-router/express": "^7.6.2",
     "@react-router/node": "^7.6.2",
     "compression": "^1.8.0",
